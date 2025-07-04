@@ -1,0 +1,467 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #ffe4f0;
+    color: #333;
+    transition: background 0.3s, color 0.3s;
+}
+
+.dark-mode {
+    background-color: #2c2c2c;
+    color: #fff;
+}
+
+.wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 240px;
+    background-color: #ff69b4;
+    color: #fff;
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    min-height: 100vh;
+    transition: all 0.3s ease;
+}
+
+.sidebar.collapsed {
+    left: -240px;
+}
+
+.sidebar h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin-bottom: 15px;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+.sidebar ul li a:hover {
+    background-color: #d455a3;
+}
+
+.main {
+    margin-left: 240px;
+    transition: all 0.3s ease;
+    flex-grow: 1;
+}
+
+.main.full {
+    margin-left: 0;
+}
+
+.navbar {
+    background-color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.dark-mode .navbar {
+    background-color: #1f1f1f;
+    color: #fff;
+}
+
+.navbar button {
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 6px 10px;
+    border-radius: 10px;
+    border: 2px solid #ec4899;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.search-form input[type="text"] {
+    border: none;
+    outline: none;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    width: 180px;
+    background-color: transparent;
+    color: #ec4899;
+}
+
+.search-form button {
+    background: none;
+    border: none;
+    color: #ec4899;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+
+/* Animasi sparkle saat hover */
+.btn-edit:hover i,
+.btn-delete:hover i,
+.navbar button:hover i,
+.sidebar ul li a:hover i {
+    animation: sparkle 0.6s ease-in-out;
+    color: #fff0f6;
+}
+
+@keyframes sparkle {
+    0%   { transform: scale(1); opacity: 1; }
+    50%  { transform: scale(1.4); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Tambahan efek lucu pas hover tombol cari */
+.search-form button:hover {
+    background-color: #ec4899;
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+/* Reset tombol cari */
+.btn-reset {
+    background: none;
+    border: none;
+    color: #ec4899;
+    font-size: 20px;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.btn-reset:hover {
+    transform: rotate(180deg);
+    color: #ff7eb9;
+}
+
+/* Heading cute efek */
+.content h2 i,
+.sidebar h2 i,
+.navbar h1 i {
+    color: #ec4899;
+    margin-right: 8px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+    100% { transform: translateY(0); }
+}
+
+.content {
+    padding: 20px;
+}
+
+.content h2 {
+    margin-bottom: 20px;
+    color: #d12b88;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.dark-mode table {
+    background-color: #3c3c3c;
+    color: #fff;
+}
+
+th, td {
+    padding: 12px 16px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #ff69b4;
+    color: white;
+}
+
+.dark-mode th {
+    background-color: #c2185b;
+}
+
+tr:hover {
+    background-color: #fff0f6;
+}
+
+.dark-mode tr:hover {
+    background-color: #444;
+}
+
+.btn-edit, .btn-delete {
+    padding: 6px 12px;
+    font-size: 13px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    color: white;
+    margin-right: 5px;
+}
+
+.btn-edit {
+    background-color: #ffb347;
+}
+
+.btn-delete {
+    background-color: #ff5c8a;
+}
+
+.btn-edit:hover {
+    background-color: #ffa726;
+}
+
+.btn-delete:hover {
+    background-color: #e91e63;
+}
+.form-container {
+    max-width: 500px;
+    margin: 40px auto;
+    background: #fff0f6;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+    margin-bottom: 20px;
+    color: #ff4db8;
+    text-align: center;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+.form-container button {
+    background: #ff4db8;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.form-container .btn-cancel {
+    display: inline-block;
+    margin-top: 15px;
+    color: #555;
+    text-decoration: none;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.btn-submit {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-submit:hover {
+  background-color: #45a049;
+}
+
+.close {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.toolbar {
+  margin-bottom: 20px;
+}
+
+.btn-add {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-add i {
+  margin-right: 5px;
+}
+
+.btn-add:hover {
+  background-color: #0056b3;
+}
+.pink {
+  background-color: #ec4899;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.pink:hover {
+  background-color: #db2777;
+}
+
+.btn-add.pink {
+  margin: 20px 0;
+}
+
+.modal-content .btn-submit.pink {
+  width: 100%;
+  margin-top: 15px;
+}
+.btn-submit.pink {
+    background-color: #ec4899;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-submit.pink:hover {
+    background-color: #db2777;
+}
+/* === DARK MODE: Modal === */
+.dark-mode .modal-content {
+    background-color: #2f2f2f;
+    color: #fff;
+    border: 1px solid #444;
+}
+
+.dark-mode .modal-content input {
+    background-color: #444;
+    color: #fff;
+    border: 1px solid #666;
+}
+
+.dark-mode .modal-content input::placeholder {
+    color: #aaa;
+}
+
+.dark-mode .modal-content .close {
+    color: #fff;
+}
+
+.dark-mode .modal-content .btn-submit.pink {
+    background-color: #ec4899;
+    color: #fff;
+}
+
+.dark-mode .modal-content .btn-submit.pink:hover {
+    background-color: #db2777;
+}
+/* === DARK MODE: Search Bar === */
+.dark-mode .search-form {
+    background-color: #3c3c3c;
+    border-color: #ec4899;
+}
+
+.dark-mode .search-form input[type="text"] {
+    background-color: #3c3c3c;
+    color: #fff;
+}
+
+.dark-mode .search-form input[type="text"]::placeholder {
+    color: #aaa;
+}
+
+.dark-mode .search-form button {
+    color: #ec4899;
+}
+
+.dark-mode .btn-reset {
+    color: #ec4899;
+}
+
+.dark-mode .btn-reset:hover {
+    color: #ff7eb9;
+}
+.search-form,
+.search-form input,
+.search-form button,
+.btn-reset {
+    transition: background-color 0.3s, color 0.3s;
+}
